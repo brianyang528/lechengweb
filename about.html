@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">LECHENG SYMPHONY ORCHESTRA</a>
+    <nav class="nav-section">
+      <ul class="nav-links">
+        <li><a href="about.html" id="nav-about">About Us</a></li>
+        <li><a href="members.html" id="nav-members">Members</a></li>
+        <li><a href="conductor.html" id="nav-conductor">Conductor</a></li>
+      </ul>
+      <div class="lang-dropdown">
+        <button class="lang-toggle" onclick="toggleLangMenu()" id="langToggle">EN ▾</button>
+        <ul class="lang-menu" id="langMenu">
+          <li onclick="switchLanguage('en')">English</li>
+          <li onclick="switchLanguage('zh')">中文</li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="about-page">
+    <section class="about-hero">
+      <h1 id="about-title">About Us</h1>
+      <p id="about-subtitle">Get to know our symphony orchestra!</p>
+    </section>
+
+    <section class="about-gallery">
+      <img src="img1.jpg" alt="相片1(之後會放)">
+      <img src="img2.jpg" alt="相片2(之後會放)">
+      <img src="img3.jpg" alt="相片3(之後會放)">
+    </section>
+  </main>
+
+  <script>
+    window.onload = function () {
+      const lang = localStorage.getItem("language") || "en";
+
+      document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+      document.getElementById("nav-about").textContent = lang === "en" ? "About Us" : "關於我們";
+      document.getElementById("nav-members").textContent = lang === "en" ? "Members" : "團員介紹";
+      document.getElementById("nav-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+
+      document.getElementById("about-title").textContent = lang === "en" ? "About LeCheng" : "關於樂成";
+      document.getElementById("about-subtitle").textContent = lang === "en"
+        ? "Get to know LeCheng:"
+        : "了解樂成:";
+    };
+
+    function toggleLangMenu() {
+      document.getElementById("langMenu").classList.toggle("show");
+    }
+
+    function switchLanguage(lang) {
+      localStorage.setItem("language", lang);
+      location.reload();
+    }
+
+    window.onclick = function (e) {
+      if (!e.target.matches(".lang-toggle")) {
+        const menu = document.getElementById("langMenu");
+        if (menu && menu.classList.contains("show")) {
+          menu.classList.remove("show");
+        }
+      }
+    };
+  </script>
+</body>
+</html>

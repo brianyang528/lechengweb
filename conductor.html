@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conductor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">LECHENG SYMPHONY ORCHESTRA</a>
+    <nav class="nav-section">
+      <ul class="nav-links">
+        <li><a href="about.html" id="nav-about">About Us</a></li>
+        <li><a href="members.html" id="nav-members">Members</a></li>
+        <li><a href="conductor.html" id="nav-conductor">Conductor</a></li>
+      </ul>
+      <div class="lang-dropdown">
+  <button class="lang-toggle" onclick="toggleLangMenu()" id="langToggle">EN ▾</button>
+  <ul class="lang-menu" id="langMenu">
+    <li onclick="switchLanguage('en')">English</li>
+    <li onclick="switchLanguage('zh')">中文</li>
+  </ul>
+</div>
+
+    </nav>
+  </header>
+
+  <main class="conductor-page">
+    <div class="content-box">
+      <p class="title-sub">CONDUCTOR</p>
+      <h1 class="conductor-name">Fang-Ju Kuo</h1>
+      <img src="指揮郭芳如.png" alt="Fang-Ju Kuo" class="conductor-photo">
+
+      <div class="bio" id="bio-en">
+        <p>Fang-Ju Kuo is a promising Taiwanese conductor. She is the Special Prize and Orchestra Prize winner of the 4th BMI International Bucharest Conducting Competition.</p>
+        <p>Kuo serves as Music Director of LeCheng Symphony Orchestra and the Hsinchu County Symphony Orchestra from Taiwan. She has also been invited multiple times to serve as a guest conductor in Milan. Recent engagements include conducting the Baltimore Symphony Orchestra, DUNA SZIMFONIKUS Orchestra, National Symphony Orchestra, and Taipei National University of the Arts Orchestra.</p>
+        <p>Kuo collaborated with Hsinchu County to plan plenty of charity events for students living in rural and mountain areas. She also conducts multiple high school wind ensembles in Taiwan, consistently achieving top honors at national competitions. In summer 2024, she led the Hsinchu County Symphony Orchestra on tour to Paris, promoting international music exchange opportunities for local musicians.</p>
+        <p>She is currently studying under the guidance of world-renowned conductor Marin Alsop and pursuing her Graduate Performance Diploma at the Peabody Institute of Johns Hopkins University.</p>
+        <blockquote>"Creating a better world through the artistry of hands." – Fang-Ju Kuo</blockquote>
+
+        <h2>Awards and Positions</h2>
+        <ul>
+          <li>Special Talent & Orchestra Prize - BMI Bucharest Competition 2022</li>
+          <li>Music Director - LeCheng Symphony Orchestra</li>
+          <li>Conductor - Hsinchu County Symphony Wind Band</li>
+          <li>Music Director - Hsinchu County Youth Orchestra</li>
+          <li>Conductor - Jhubei, Jhudong, National Hsinchu Industrial, and National Hsinchu Girls’ High School Bands</li>
+        </ul>
+        <h2>Contact</h2>
+        <ul>
+          <li>Email:</li>
+          <p>kfangju@gmail.com</p>
+          <li>Hsinchu County Symphony Wind Orchestra:</li>
+          <p>hsinchusb@gmail.com</p>
+          <li>LeCheng Symphony Orchestra:</li>
+          <p>lechengsymphony@gmail.com</p>
+        </ul>
+      </div>
+
+      <div class="bio" id="bio-zh" style="display: none;">
+        <p>郭芳如是一位深具潛力的台灣新生代指揮家。她曾榮獲第四屆羅馬尼亞布加勒斯特指揮比賽的特別獎與樂團獎。</p>
+        <p>她目前擔任臺灣樂成交響樂團及新竹縣交響樂團的音樂總監，並多次赴米蘭擔任客席指揮。近期合作樂團包含巴爾的摩交響樂團、匈牙利DUNA交響樂團、華盛頓國家交響樂團及臺北藝術大學交響樂團。</p>
+        <p>她也與新竹縣政府合作策劃多項慈善活動，致力於偏鄉與山區學生的音樂教育。她同時也是多所高中管樂團指揮，並在全國比賽中屢獲特優。2024年暑假，她帶領新竹縣交響樂團赴巴黎演出，積極推動國際音樂交流。</p>
+        <p>郭芳如目前師承國際知名指揮家馬林·奧爾索普，並於美國約翰霍普金斯大學皮博迪音樂學院攻讀最高指揮文憑。</p>
+        <blockquote>「用雙手的藝術創造更美好的世界。」—— 郭芳如</blockquote>
+
+        <h2>獎項與職位</h2>
+        <ul>
+          <li>2022 羅馬尼亞布加勒斯特指揮比賽 特別獎與樂團獎</li>
+          <li>樂成交響樂團 音樂總監</li>
+          <li>新竹縣交響管樂團 指揮</li>
+          <li>新竹縣青少年交響樂團 音樂總監</li>
+          <li>竹北高中、竹東高中、竹女中、新竹高工 管樂團指揮</li>
+        </ul>
+        <h2>聯絡方式</h2>
+        <ul>
+          <li>電子郵箱:</li>
+          <p>kfangju@gmail.com</p>
+          <li>新竹縣立交響管樂團:</li>
+          <p>hsinchusb@gmail.com</p>
+          <li>樂成交響樂團:</li>
+          <p>lechengsymphony@gmail.com</p>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  window.onload = function () {
+    const lang = localStorage.getItem("language") || "en";
+    document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+
+    document.getElementById("nav-about").textContent = lang === "en" ? "About Us" : "關於我們";
+    document.getElementById("nav-members").textContent = lang === "en" ? "Members" : "團員介紹";
+    document.getElementById("nav-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+
+    document.querySelector(".conductor-name").textContent = lang === "en" ? "Fang-Ju Kuo" : "郭芳如";
+    document.querySelector(".title-sub").textContent = lang === "en" ? "CONDUCTOR" : "指揮";
+
+    document.getElementById("bio-en").style.display = lang === "en" ? "block" : "none";
+    document.getElementById("bio-zh").style.display = lang === "zh" ? "block" : "none";
+  };
+
+  function toggleLangMenu() {
+    document.getElementById("langMenu").classList.toggle("show");
+  }
+
+  function switchLanguage(lang) {
+    localStorage.setItem("language", lang);
+    location.reload();
+  }
+
+  window.onclick = function (e) {
+    if (!e.target.matches(".lang-toggle")) {
+      const menu = document.getElementById("langMenu");
+      if (menu && menu.classList.contains("show")) {
+        menu.classList.remove("show");
+      }
+    }
+  };
+</script>
+
+
+</body>
+</html>

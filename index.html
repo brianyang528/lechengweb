@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LECHENG Symphony Orchestra</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="logo">LECHENG SYMPHONY ORCHESTRA</a>
+    <nav class="nav-section">
+      <ul class="nav-links">
+        <li><a href="about.html" id="nav-about">About Us</a></li>
+        <li><a href="members.html" id="nav-members">Members</a></li>
+        <li><a href="conductor.html" id="nav-conductor">Conductor</a></li>
+      </ul>
+      <div class="lang-dropdown">
+        <button class="lang-toggle" onclick="toggleLangMenu()" id="langToggle">EN ▾</button>
+        <ul class="lang-menu" id="langMenu">
+          <li onclick="switchLanguage('en')">English</li>
+          <li onclick="switchLanguage('zh')">中文</li>
+        </ul>
+      </div>
+    </nav>
+    <!-- 手機選單 -->
+    <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="about.html">About Us</a>
+      <a href="members.html">Members</a>
+      <a href="conductor.html">Conductor</a>
+      <div class="lang-dropdown-mobile">
+        <button onclick="toggleLangMenu()" id="langToggleMobile">EN ▾</button>
+        <ul class="lang-menu" id="langMenuMobile">
+          <li onclick="switchLanguage('en')">English</li>
+          <li onclick="switchLanguage('zh')">中文</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" data-aos="fade-up">
+    <div class="overlay"></div>
+    <div class="hero-content fade-in">
+  <h1 class="hero-title" id="title-en">Welcome to <span class="highlight">LeCheng Symphony Orchestra</span></h1>
+  <h1 class="hero-title" id="title-zh" style="display:none;">歡迎來到<span class="highlight">樂成交響樂團</span></h1>
+  <p class="hero-subtitle">since 2024</p>
+</div>
+
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleLangMenu() {
+      document.getElementById("langMenu").classList.toggle("show");
+      document.getElementById("langMenuMobile").classList.toggle("show");
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobileNav").classList.toggle("show");
+    }
+
+    function switchLanguage(lang) {
+      localStorage.setItem("language", lang);
+      location.reload();
+    }
+
+    window.onload = function () {
+  const lang = localStorage.getItem("language") || "en";
+
+  document.title = lang === "en" ? "Symphony Orchestra" : "交響樂團";
+  document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+  document.getElementById("langToggleMobile").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+  document.getElementById("nav-about").textContent = lang === "en" ? "About Us" : "關於我們";
+  document.getElementById("nav-members").textContent = lang === "en" ? "Members" : "團員介紹";
+  document.getElementById("nav-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+
+  document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
+  document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
+};
+
+
+    window.onclick = function (e) {
+      if (!e.target.matches(".lang-toggle")) {
+        const menu = document.getElementById("langMenu");
+        if (menu && menu.classList.contains("show")) {
+          menu.classList.remove("show");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", function () {
+  const navbar = document.getElementById("navbar");
+  if (window.scrollY > 10) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+
+  </script>
+</body>
+</html>
