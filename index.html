@@ -28,7 +28,7 @@
   </style>
 </head>
 <body>
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <a href="index.html" class="logo">LECHENG SYMPHONY ORCHESTRA</a>
     <nav class="nav-section">
       <ul class="nav-links">
@@ -44,12 +44,13 @@
         </ul>
       </div>
     </nav>
+
     <!-- 手機選單 -->
-    <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
-    <div class="mobile-nav">
-  <a href="about.html">About Us</a>
-  <a href="members.html">Members</a>
-  <a href="conductor.html">Conductor</a>
+    <div class="hamburger" onclick="toggleMobileMenu()" style="color: white;">☰</div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="about.html" id="m-about">About Us</a>
+      <a href="members.html" id="m-members">Members</a>
+      <a href="conductor.html" id="m-conductor">Conductor</a>
       <div class="lang-dropdown-mobile">
         <button onclick="toggleLangMenu()" id="langToggleMobile">EN ▾</button>
         <ul class="lang-menu" id="langMenuMobile">
@@ -63,11 +64,10 @@
   <section class="hero" data-aos="fade-up">
     <div class="overlay"></div>
     <div class="hero-content fade-in">
-  <h1 class="hero-title" id="title-en">Welcome to <span class="highlight">LeCheng Symphony Orchestra</span></h1>
-  <h1 class="hero-title" id="title-zh" style="display:none;">歡迎來到<span class="highlight">樂成交響樂團</span></h1>
-  <p class="hero-subtitle">since 2024</p>
-</div>
-
+      <h1 class="hero-title" id="title-en">Welcome to <span class="highlight">LeCheng Symphony Orchestra</span></h1>
+      <h1 class="hero-title" id="title-zh" style="display:none;">歡迎來到<span class="highlight">樂成交響樂團</span></h1>
+      <p class="hero-subtitle">since 2024</p>
+    </div>
   </section>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -80,40 +80,35 @@
     }
 
     function toggleMobileMenu() {
-      document.getElementById("mobileNav").classList.toggle("show");
+      const nav = document.getElementById("mobileNav");
+      nav.classList.toggle("show");
     }
-
-
-    <!--外加的-->
-    function toggleMobileMenu() { 
-  const nav = document.getElementById("mobileNav");
-  nav.classList.toggle("show");
-}
-
-document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
-document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
-
 
     function switchLanguage(lang) {
       localStorage.setItem("language", lang);
-      location.reload();
+      updateLanguage();
+    }
+
+    function updateLanguage() {
+      const lang = localStorage.getItem("language") || "en";
+
+      document.title = lang === "en" ? "Symphony Orchestra" : "交響樂團";
+      document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+      document.getElementById("langToggleMobile").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
+      document.getElementById("nav-about").textContent = lang === "en" ? "About Us" : "關於我們";
+      document.getElementById("nav-members").textContent = lang === "en" ? "Members" : "團員介紹";
+      document.getElementById("nav-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+      document.getElementById("m-about").textContent = lang === "en" ? "About Us" : "關於我們";
+      document.getElementById("m-members").textContent = lang === "en" ? "Members" : "團員介紹";
+      document.getElementById("m-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+
+      document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
+      document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
     }
 
     window.onload = function () {
-  const lang = localStorage.getItem("language") || "en";
-
-  document.title = lang === "en" ? "Symphony Orchestra" : "交響樂團";
-  document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
-  document.getElementById("langToggleMobile").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
- document.getElementById("m-about").textContent = lang === "en" ? "About Us" : "關於我們";
-document.getElementById("m-members").textContent = lang === "en" ? "Members" : "團員介紹";
-document.getElementById("m-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
-
-
-  document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
-  document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
-};
-
+      updateLanguage();
+    };
 
     window.onclick = function (e) {
       if (!e.target.matches(".lang-toggle")) {
@@ -125,14 +120,13 @@ document.getElementById("m-conductor").textContent = lang === "en" ? "Conductor"
     };
 
     window.addEventListener("scroll", function () {
-  const navbar = document.getElementById("navbar");
-  if (window.scrollY > 10) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
-
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
   </script>
 </body>
 </html>

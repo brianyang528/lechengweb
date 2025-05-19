@@ -439,14 +439,18 @@ html {
 
 /* 手機版導覽列 */
 .hamburger {
-  color: white;
+  color: white; /* 漢堡選單圖示變白色 */
   font-size: 28px;
   cursor: pointer;
+  display: none;
+  z-index: 1001;
   position: absolute;
-  top: 25px;
+  top: 20px;
   right: 20px;
-  z-index: 999;
+  background: transparent;
+  border: none;
 }
+
 
 
 .mobile-nav {
@@ -664,3 +668,27 @@ html {
 .mobile-nav.show {
   animation: slideDown 0.3s ease forwards;
 }
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+/*手機電腦設定*/
+.hero-content {
+  position: absolute;
+  top: 20%; /* 控制上下位置，往上移一點 */
+  left: 10%;
+  transform: translateX(-50%); /* 只水平置中，不要上下移 */
+  text-align: center;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: 15%;  /* 手機版更往上一點 */
+  }
+}
+
