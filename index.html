@@ -83,6 +83,14 @@
       document.getElementById("mobileNav").classList.toggle("show");
     }
 
+
+    <!--外加的-->
+    function toggleMobileMenu() { 
+  const nav = document.getElementById("mobileNav");
+  nav.classList.toggle("show");
+}
+
+
     function switchLanguage(lang) {
       localStorage.setItem("language", lang);
       location.reload();
