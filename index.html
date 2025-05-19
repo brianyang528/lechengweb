@@ -46,10 +46,10 @@
     </nav>
     <!-- 手機選單 -->
     <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="about.html">About Us</a>
-      <a href="members.html">Members</a>
-      <a href="conductor.html">Conductor</a>
+    <div class="mobile-nav">
+  <a href="about.html">About Us</a>
+  <a href="members.html">Members</a>
+  <a href="conductor.html">Conductor</a>
       <div class="lang-dropdown-mobile">
         <button onclick="toggleLangMenu()" id="langToggleMobile">EN ▾</button>
         <ul class="lang-menu" id="langMenuMobile">
@@ -90,6 +90,9 @@
   nav.classList.toggle("show");
 }
 
+document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
+document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
+
 
     function switchLanguage(lang) {
       localStorage.setItem("language", lang);
@@ -102,9 +105,10 @@
   document.title = lang === "en" ? "Symphony Orchestra" : "交響樂團";
   document.getElementById("langToggle").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
   document.getElementById("langToggleMobile").textContent = lang === "en" ? "EN ▾" : "中文 ▾";
-  document.getElementById("nav-about").textContent = lang === "en" ? "About Us" : "關於我們";
-  document.getElementById("nav-members").textContent = lang === "en" ? "Members" : "團員介紹";
-  document.getElementById("nav-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+ document.getElementById("m-about").textContent = lang === "en" ? "About Us" : "關於我們";
+document.getElementById("m-members").textContent = lang === "en" ? "Members" : "團員介紹";
+document.getElementById("m-conductor").textContent = lang === "en" ? "Conductor" : "指揮介紹";
+
 
   document.getElementById("title-en").style.display = lang === "en" ? "block" : "none";
   document.getElementById("title-zh").style.display = lang === "zh" ? "block" : "none";
